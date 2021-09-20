@@ -1,0 +1,133 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary-color:#00598f;
+
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 1.7rem;
+    padding-left: 70px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f5fa;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 13px;
+
+}
+
+nav ul li a {
+    position: relative;
+    font-size: 20px;
+    color: white;
+    border-radius: 0px 0px 20px 20px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    background-color: var(--primary-color);
+
+}
+
+
+@keyframes cambio {
+    0% {
+        margin-left: 0;
+    }
+
+    20% {
+        margin-left: 0;
+    }
+
+    25% {
+        margin-left: -100%;
+    }
+
+    45% {
+        margin-left: -100%;
+    }
+
+    50% {
+        margin-left: -200%;
+    }
+
+    70% {
+        margin-left: -200%;
+    }
+
+    75% {
+        margin-left: -300%;
+    }
+
+    100% {
+        margin-left: -300%;
+    }
+}
+
+.nav-link {
+    color: var(--primary-color);
+    font-size: 1.6rem;}
+
+.fondo,
+.fondo-odontologo {
+    width: 100%;
+    height: 900px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#div_odontologo_table>h2 {
+    margin-top: 20px;
+}
+
+thead th {
+    color: var(--primary-color);
+}
+
+tbody {
+    color: var(--primary-color);
+}
+
+.admon {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+footer {
+    height: 50px;
+    background-color: var(--primary-color);
+    padding: 35px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.td {
+ color: var(--primary-color);
+}
