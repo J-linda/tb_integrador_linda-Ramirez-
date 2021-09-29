@@ -23,7 +23,7 @@ public class OdontologoController {
     }
 
     @GetMapping(path = "{id}")
-    public OdontologoDTO obtener(@PathVariable Long id) {
+    public OdontologoDTO obtener(@PathVariable Long id) throws Exception {
         return odontologoService.obtener(id);
     }
 
@@ -33,9 +33,9 @@ public class OdontologoController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "{id}")
-    public ResponseEntity<OdontologoDTO> modificar(@RequestBody OdontologoDTO odontologo, @PathVariable Long id) {
-        odontologoService.modificar(odontologo, id);
+    @PutMapping//(path = "{id}")
+    public ResponseEntity<OdontologoDTO> modificar(@RequestBody OdontologoDTO odontologo) {
+        odontologoService.modificar(odontologo);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

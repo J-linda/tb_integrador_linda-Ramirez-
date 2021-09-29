@@ -5,8 +5,8 @@ import java.util.Set;
 public interface PacienteService {
 
     Set<PacienteDTO> obtenerTodos();
-    PacienteDTO obtener(Long id);
+    PacienteDTO obtener(Long id) throws Exception;
     PacienteDTO agregar(PacienteDTO pacienteDTO);
-    PacienteDTO modificar(PacienteDTO pacienteDTO, Long id);
+    PacienteDTO modificar(PacienteDTO pacienteDTO);
     void eliminar(Long id);
 }

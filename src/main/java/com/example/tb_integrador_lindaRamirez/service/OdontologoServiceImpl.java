@@ -45,15 +45,15 @@ public class OdontologoServiceImpl implements OdontologoService{
 
     @Override
     @Transactional(readOnly = true)
-    public OdontologoDTO obtener(Long id) {
-        OdontologoDTO odontologoDTO = null;
-        Optional<Odontologo>odontologo = odontologoRepository.findById(id);
+    public OdontologoDTO obtener(Long id) throws Exception {
+        //OdontologoDTO odontologoDTO = null;
+        Optional<Odontologo> odontologo = odontologoRepository.findById(id);
         if (odontologo.isPresent()) {
-            odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);
+            return mapper.convertValue(odontologo, OdontologoDTO.class);
+        } else {
+            throw new Exception("Ondontologo no se encuentra en la base de datos");
         }
-        return odontologoDTO;
     }
-
     @Override
     @Transactional
     public OdontologoDTO agregar(OdontologoDTO odontologoDTO) {
@@ -62,7 +62,7 @@ public class OdontologoServiceImpl implements OdontologoService{
         return new OdontologoDTO(odontologo.getId(), odontologo.getNombre(), odontologo.getApellido(),odontologo.getMatricula());
     }
     @Override
-    public OdontologoDTO modificar(OdontologoDTO odontologoDTO, Long id){
+    public OdontologoDTO modificar(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
         odontologoRepository.save(odontologo);
         return new OdontologoDTO(odontologoDTO.getId(), odontologo.getNombre(), odontologo.getApellido(),odontologo.getMatricula());

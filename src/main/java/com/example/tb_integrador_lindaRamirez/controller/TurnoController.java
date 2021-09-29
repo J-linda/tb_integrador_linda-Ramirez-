@@ -24,7 +24,7 @@ public class TurnoController {
             return turnoService.obtenerTodos();
         }
         @GetMapping (path= "{id}")
-        public TurnoDTO obtener(@PathVariable Long id){
+        public TurnoDTO obtener(@PathVariable Long id) throws Exception {
             return turnoService.obtener(id);
        }
 
@@ -33,9 +33,9 @@ public class TurnoController {
             turnoService.agregar(turno);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
-        @PutMapping(path = "{id}")
-        public ResponseEntity<TurnoDTO>modificar(@RequestBody TurnoDTO turno, @PathVariable Long id){
-            turnoService.modificar(turno,id);
+        @PutMapping//(path = "{id}")
+        public ResponseEntity<TurnoDTO>modificar(@RequestBody TurnoDTO turno){
+            turnoService.modificar(turno);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         @DeleteMapping(path = "{id}")

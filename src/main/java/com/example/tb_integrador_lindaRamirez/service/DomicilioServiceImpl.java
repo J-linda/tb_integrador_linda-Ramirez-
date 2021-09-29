@@ -43,13 +43,14 @@ public class DomicilioServiceImpl implements DomicilioService {
 
     @Override
     @Transactional(readOnly = true)
-    public DomicilioDTO obtener(Long id) {
-        DomicilioDTO domicilioDTO = null;
+    public DomicilioDTO obtener(Long id) throws Exception {
+        //DomicilioDTO domicilioDTO = null;
         Optional<Domicilio> domicilio = domicilioRepository.findById(id);
         if(domicilio.isPresent()){
-            domicilioDTO = mapper.convertValue(domicilio, DomicilioDTO.class);
+            return mapper.convertValue(domicilio, DomicilioDTO.class);
+        }else {
+            throw new Exception("Domicilio no se ha encontrado en la base de datos");
         }
-        return domicilioDTO;
     }
     //public Domicilio obtener(Long id) {
         //return domicilioRepository.getById(id);
@@ -64,7 +65,7 @@ public class DomicilioServiceImpl implements DomicilioService {
     }
 
     @Override
-    public DomicilioDTO modificar(DomicilioDTO domicilioDTO, Long id) {
+    public DomicilioDTO modificar(DomicilioDTO domicilioDTO) {
         Domicilio domicilio = mapper.convertValue(domicilioDTO, Domicilio.class);
         domicilioRepository.save(domicilio);
         return new DomicilioDTO(domicilio.getId(), domicilio.getCalle(),domicilio.getNumero(),domicilio.getLocalidad(),domicilio.getProvincia());

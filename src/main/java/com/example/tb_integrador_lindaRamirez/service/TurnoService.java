@@ -7,9 +7,9 @@ import java.util.Set;
 public interface TurnoService {
 
     Set<TurnoDTO>obtenerTodos();
-    TurnoDTO obtener(Long id);
+    TurnoDTO obtener(Long id) throws Exception;
     TurnoDTO agregar(TurnoDTO turnoDTO);
-    TurnoDTO modificar(TurnoDTO turnoDTO, Long id);
+    TurnoDTO modificar(TurnoDTO turnoDTO);
     void eliminar(Long id);
 
 }

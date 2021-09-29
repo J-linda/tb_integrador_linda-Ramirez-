@@ -1,0 +1,4 @@
+[2021-09-2820:24:21] [ ERROR] [GlobalExceptionHandler:18] Paciente no se ha encontrado en la base de datos
+[2021-09-2820:24:31] [ ERROR] [GlobalExceptionHandler:18] Ondontologo no se encuentra en la base de datos
+[2021-09-2820:24:45] [ ERROR] [GlobalExceptionHandler:18] Turno no se encuentra en la base de datos
+[2021-09-2820:26:14] [ ERROR] [GlobalExceptionHandler:18] Domicilio no se ha encontrado en la base de datos

@@ -47,13 +47,14 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     @Transactional(readOnly = true)
-    public PacienteDTO obtener(Long id) {
-        PacienteDTO pacienteDTO = null;
+    public PacienteDTO obtener(Long id) throws Exception {
+        //PacienteDTO pacienteDTO = null;
         Optional<Paciente> paciente = pacienteRepository.findById(id);
         if(paciente.isPresent()){
-            pacienteDTO = mapper.convertValue(paciente, PacienteDTO.class);
+            return mapper.convertValue(paciente, PacienteDTO.class);
+        }else {
+            throw new Exception("Paciente no se ha encontrado en la base de datos");
         }
-        return pacienteDTO;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class PacienteServiceImpl implements PacienteService {
     }
 
     @Override
-    public PacienteDTO modificar(PacienteDTO pacienteDTO, Long id) {
+    public PacienteDTO modificar(PacienteDTO pacienteDTO) {
         Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
         pacienteRepository.save(paciente);
         return new PacienteDTO(paciente.getId(), paciente.getNombre(),paciente.getApellido(), paciente.getDni(), paciente.getFechaAlta(), pacienteDTO.getDomicilio());

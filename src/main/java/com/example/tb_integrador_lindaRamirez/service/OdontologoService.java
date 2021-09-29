@@ -7,8 +7,8 @@ import java.util.Set;
 public interface OdontologoService {
 
     Set<OdontologoDTO> obtenerTodos();
-    OdontologoDTO obtener (Long id);
+    OdontologoDTO obtener (Long id) throws Exception;
     OdontologoDTO agregar (OdontologoDTO odontologoDTO);
-    OdontologoDTO modificar (OdontologoDTO odontologoDTO, Long id);
+    OdontologoDTO modificar (OdontologoDTO odontologoDTO);
 
 }

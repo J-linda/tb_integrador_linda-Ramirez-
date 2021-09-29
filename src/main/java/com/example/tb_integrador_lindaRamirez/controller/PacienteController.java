@@ -23,7 +23,7 @@ public class PacienteController {
         return pacienteService.obtenerTodos();
     }
     @GetMapping (path= "{id}")
-    public PacienteDTO obtener(@PathVariable Long id){
+    public PacienteDTO obtener(@PathVariable Long id) throws Exception {
         return pacienteService.obtener(id);
     }
 
@@ -32,9 +32,9 @@ public class PacienteController {
         pacienteService.agregar(paciente);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @PutMapping(path = "{id}")
-    public ResponseEntity<PacienteDTO>modificar(@RequestBody PacienteDTO paciente, @PathVariable Long id){
-        pacienteService.modificar(paciente,id);
+    @PutMapping//(path = "{id}")
+    public ResponseEntity<PacienteDTO>modificar(@RequestBody PacienteDTO paciente){
+        pacienteService.modificar(paciente);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping(path = "{id}")

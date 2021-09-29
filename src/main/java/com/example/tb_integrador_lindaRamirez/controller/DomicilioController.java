@@ -20,7 +20,7 @@ public class DomicilioController {
        return domicilioService.obtenerTodos();
     }
     @GetMapping(path = "{id}")
-    public DomicilioDTO obtener(@PathVariable Long id){
+    public DomicilioDTO obtener(@PathVariable Long id) throws Exception {
         return domicilioService.obtener(id);
     }
     //public Domicilio obtener(@PathVariable("id") Long id) {
@@ -32,9 +32,9 @@ public class DomicilioController {
         domicilioService.agregar(domicilio);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @PutMapping(path = "{id}")// debe tener el path???
-    public ResponseEntity<DomicilioDTO>modificar(@RequestBody DomicilioDTO domicilio, @PathVariable Long id){
-        domicilioService.modificar(domicilio,id);
+    @PutMapping//(path = "{id}")// debe tener el path???
+    public ResponseEntity<DomicilioDTO>modificar(@RequestBody DomicilioDTO domicilio){
+        domicilioService.modificar(domicilio);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping(path = "{id}")

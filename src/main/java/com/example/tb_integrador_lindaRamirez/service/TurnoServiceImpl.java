@@ -41,13 +41,14 @@ public class TurnoServiceImpl implements TurnoService{
 
     @Override
     @Transactional(readOnly = true)
-    public TurnoDTO obtener(Long id) {
-        TurnoDTO turnoDTO = null;
+    public TurnoDTO obtener(Long id) throws Exception{
+        //TurnoDTO turnoDTO = null;
         Optional<Turno> turno = turnoRepository.findById(id);
             if(turno.isPresent()){
-            turnoDTO = mapper.convertValue(turno, TurnoDTO.class);
-        }
-        return turnoDTO;
+            return mapper.convertValue(turno, TurnoDTO.class);
+        }else {
+                throw new Exception("Turno no se encuentra en la base de datos");
+            }
     }
 
     @Override
@@ -59,7 +60,7 @@ public class TurnoServiceImpl implements TurnoService{
     }
 
     @Override
-    public TurnoDTO modificar(TurnoDTO turnoDTO, Long id) {
+    public TurnoDTO modificar(TurnoDTO turnoDTO) {
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
         turnoRepository.save(turno);
         return new TurnoDTO(turno.getId(), turno.getOdontologo(),turno.getPaciente(), turno.getFecha(), turno.getHora());
