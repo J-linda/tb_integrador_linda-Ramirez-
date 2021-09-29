@@ -1,46 +1,74 @@
 package com.example.tb_integrador_lindaRamirez.service;
+import com.example.tb_integrador_lindaRamirez.controller.DTO.PacienteDTO;
 import com.example.tb_integrador_lindaRamirez.entity.Paciente;
 import com.example.tb_integrador_lindaRamirez.repository.IPacienteRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PacienteServiceImpl implements PacienteService {
 
-    private final IPacienteRepository pacienteRepository;
 
-    public PacienteServiceImpl(IPacienteRepository pacienteRepository) {
+    private final IPacienteRepository pacienteRepository;
+    @Autowired
+    private final ObjectMapper mapper;
+
+    public PacienteServiceImpl(IPacienteRepository pacienteRepository, ObjectMapper mapper) {
         this.pacienteRepository = pacienteRepository;
+        this.mapper = mapper;
     }
 
     //METODOS
     @Override
     @Transactional(readOnly = true)
-    public List<Paciente> obtenerTodos() {
-        return pacienteRepository.findAll();
+    public Set<PacienteDTO> obtenerTodos() {
+        List<Paciente> pacientes = pacienteRepository.findAll();
+        Set<PacienteDTO> pacienteDTOS = new HashSet<>();
+        for (Paciente paciente: pacientes){
+            PacienteDTO pacienteDTO = new PacienteDTO();
+            pacienteDTO.setId(paciente.getId());
+            pacienteDTO.setNombre(paciente.getNombre());
+            pacienteDTO.setApellido(paciente.getApellido());
+            pacienteDTO.setDni(paciente.getDni());
+            pacienteDTO.setFechaAlta(paciente.getFechaAlta());
+            pacienteDTO.setDomicilio(paciente.getDomicilio());
+
+            pacienteDTOS.add(pacienteDTO);
+        }
+        return  pacienteDTOS;
     }
+
     @Override
     @Transactional(readOnly = true)
-    public Paciente obtener(Long id) {
-        return pacienteRepository.findById(id).get();
+    public PacienteDTO obtener(Long id) {
+        PacienteDTO pacienteDTO = null;
+        Optional<Paciente> paciente = pacienteRepository.findById(id);
+        if(paciente.isPresent()){
+            pacienteDTO = mapper.convertValue(paciente, PacienteDTO.class);
+        }
+        return pacienteDTO;
     }
 
     @Override
     @Transactional
-    public Paciente agregar(Paciente paciente) {
-        return pacienteRepository.save(paciente);
+    public PacienteDTO agregar(PacienteDTO pacienteDTO) {
+        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
+        pacienteRepository.save(paciente);
+        return new PacienteDTO(paciente.getId(), paciente.getNombre(),paciente.getApellido(), paciente.getDni(), paciente.getFechaAlta(), paciente.getDomicilio());
     }
 
     @Override
-    public Paciente modificar(Paciente paciente, Long id) {
-        Paciente paciente1 = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
-        paciente1.setNombre(paciente.getNombre());
-        paciente1.setApellido(paciente.getApellido());
-        paciente1.setDni(paciente.getDni());
-        paciente1.setDomicilio(paciente.getDomicilio());
-        paciente1.setFechaAlta(paciente.getFechaAlta());
-        return pacienteRepository.save(paciente1);
+    public PacienteDTO modificar(PacienteDTO pacienteDTO, Long id) {
+        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
+        pacienteRepository.save(paciente);
+        return new PacienteDTO(paciente.getId(), paciente.getNombre(),paciente.getApellido(), paciente.getDni(), paciente.getFechaAlta(), pacienteDTO.getDomicilio());
     }
 
     @Override
@@ -48,3 +76,4 @@ public class PacienteServiceImpl implements PacienteService {
         pacienteRepository.deleteById(id);
     }
 }
+

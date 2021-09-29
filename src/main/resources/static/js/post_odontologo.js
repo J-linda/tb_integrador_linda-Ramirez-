@@ -28,9 +28,10 @@ $(document).ready(function() {
                 resetUploadForm();
             },
             error: function (response) {
+            console.log(response)
                 let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                    '<strong> Correcto! </strong> </div>'
+                    '<strong> Se presento un error! </strong> </div>'
                 $("#response").append(errorAlert);
                 $("#response").css({"display": "block"});
 

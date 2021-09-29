@@ -1,11 +1,10 @@
 package com.example.tb_integrador_lindaRamirez.controller;
-import com.example.tb_integrador_lindaRamirez.entity.Domicilio;
+import com.example.tb_integrador_lindaRamirez.controller.DTO.DomicilioDTO;
 import com.example.tb_integrador_lindaRamirez.service.DomicilioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("domicilios")
@@ -17,11 +16,11 @@ public class DomicilioController {
         this.domicilioService = domicilioService;
     }
     @GetMapping
-    public List<Domicilio> obtenerTodos(){
+    public Set<DomicilioDTO> obtenerTodos(){
        return domicilioService.obtenerTodos();
     }
     @GetMapping(path = "{id}")
-    public Domicilio obtener(@PathVariable Long id){
+    public DomicilioDTO obtener(@PathVariable Long id){
         return domicilioService.obtener(id);
     }
     //public Domicilio obtener(@PathVariable("id") Long id) {
@@ -29,12 +28,12 @@ public class DomicilioController {
    // }
 
     @PostMapping
-    public ResponseEntity<Domicilio>agregar(@RequestBody Domicilio domicilio) {
+    public ResponseEntity<DomicilioDTO>agregar(@RequestBody DomicilioDTO domicilio) {
         domicilioService.agregar(domicilio);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @PutMapping(path = "{id}")// debe tener el path???
-    public ResponseEntity<Domicilio>modificar(@RequestBody Domicilio domicilio, @PathVariable Long id){
+    public ResponseEntity<DomicilioDTO>modificar(@RequestBody DomicilioDTO domicilio, @PathVariable Long id){
         domicilioService.modificar(domicilio,id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -1,14 +1,14 @@
 package com.example.tb_integrador_lindaRamirez.service;
-import com.example.tb_integrador_lindaRamirez.entity.Odontologo;
+import com.example.tb_integrador_lindaRamirez.controller.DTO.OdontologoDTO;
 
-import java.util.List;
+import java.util.Set;
 
 
 public interface OdontologoService {
 
-    List<Odontologo>obtenerTodos();
-    Odontologo obtener (Long id);
-    Odontologo agregar (Odontologo odontologo);
-    Odontologo modificar (Odontologo odontologo, Long id);
+    Set<OdontologoDTO> obtenerTodos();
+    OdontologoDTO obtener (Long id);
+    OdontologoDTO agregar (OdontologoDTO odontologoDTO);
+    OdontologoDTO modificar (OdontologoDTO odontologoDTO, Long id);
 
 }
