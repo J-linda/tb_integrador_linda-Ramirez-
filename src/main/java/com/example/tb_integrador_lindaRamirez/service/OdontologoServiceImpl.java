@@ -68,6 +68,21 @@ public class OdontologoServiceImpl implements OdontologoService{
         return new OdontologoDTO(odontologoDTO.getId(), odontologo.getNombre(), odontologo.getApellido(),odontologo.getMatricula());
     }
 
+    public Set<OdontologoDTO> getOdontologoWithApellidoLike(String apellido){
+
+        Set<Odontologo> odontologos =  odontologoRepository.getOdontologoByApellidoLike(apellido);
+
+        Set<OdontologoDTO> odontologosDTO = new HashSet<>();
+        for(Odontologo odontologo : odontologos){
+            OdontologoDTO odontologoDTO = new OdontologoDTO();
+            odontologoDTO.setNombre(odontologo.getNombre());
+            odontologoDTO.setApellido(odontologo.getApellido());
+            odontologoDTO.setId(odontologo.getId());
+
+            odontologosDTO.add(odontologoDTO);
+        }
+        return odontologosDTO;
+    }
 }
 
 

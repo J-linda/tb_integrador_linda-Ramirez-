@@ -27,6 +27,12 @@ public class OdontologoController {
         return odontologoService.obtener(id);
     }
 
+    @GetMapping("/listApellido")
+    public Set<OdontologoDTO>obtenerTodos(@RequestParam String apellido)
+    {
+        return odontologoService.getOdontologoWithApellidoLike(apellido);
+    }
+
     @PostMapping //verbo de HTTP
     public ResponseEntity<OdontologoDTO> agregar(@RequestBody OdontologoDTO odontologo) {
         odontologoService.agregar(odontologo);
@@ -38,4 +44,5 @@ public class OdontologoController {
         odontologoService.modificar(odontologo);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }
