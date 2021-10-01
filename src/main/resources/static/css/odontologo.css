@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
     box-sizing: border-box;
@@ -6,8 +7,12 @@
 }
 
 :root {
-    --primary-color:#00598f;
+    --primary-color: #465cb7;
 
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
 .btn {
@@ -23,6 +28,10 @@ h1 {
     font-weight: bold;
 }
 
+span {
+    color: rgb(115, 96, 201);
+    text-align: center;
+}
 
 header {
     display: flex;
@@ -38,6 +47,11 @@ nav ul {
 
 }
 
+a:hover {
+    text-decoration: none;
+    color: rgb(245, 245, 245);
+}
+
 nav ul li a {
     position: relative;
     font-size: 20px;
@@ -48,6 +62,23 @@ nav ul li a {
     align-items: center;
     padding-right: 20px;
     background-color: var(--primary-color);
+
+}
+
+nav ul li a:before {
+    content: '';
+    background: rgb(94, 83, 192);
+    position: absolute;
+    bottom: -10px;
+    height: 4px;
+    width: 0%;
+    transition: ease 1.2s;
+    text-decoration: none;
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+    transition: ease-in .4s;
 
 }
 
@@ -86,50 +117,101 @@ nav ul li a {
     }
 }
 
-.nav-link {
-    color: var(--primary-color);
-    font-size: 1.6rem;}
-
-.fondo,
-.fondo-odontologo {
-    width: 100%;
-    height: 900px;
-    color: black;
+.container{
+    margin-top: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 20px;
+}
+.diente{
+    background-image: url('/img/diente.png');
+    width: 25%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.formulario{
+    width: 70%;
+}
+.nav-pills{
+    display: flex;
+    gap: 13px;
+}
+.nav-link {
+    color: white;
+    font-size: 1.6rem;
+   background-color: #435991;
+}
+    
+.nav-link:hover {
+    background-color: var(--primary-color);
 }
 
+
+.fondo {
+   background-image: url('/img/fondo2.jpg');
+    width: 100%;
+    color: black;
+}
 
 #div_odontologo_table>h2 {
     margin-top: 20px;
 }
 
 thead th {
-    color: var(--primary-color);
+    color: black;
 }
 
 tbody {
-    color: var(--primary-color);
+    color: black;
 }
-
-.admon {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-footer {
-    height: 50px;
-    background-color: var(--primary-color);
-    padding: 35px 0px;
+.footer-odontologo{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color:var(--primary-color);
+    text-align:center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding:15px;
+}
+.footer-odontologo>h2{
     color: white;
 }
+.footer-odontologo>h2>span{
+    color:#00BCD4;
+}
+.iconos {
+    display: flex;
+    gap: 13px;
+    align-items: flex-end;
+    text-align: center;
 
-.td {
- color: var(--primary-color);
+}
+.iconos>div>h2{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.iconos>div>h2>span{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
 }
 
+.fa-tooth{
+    color: #00BCD4;
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
 
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    
+
+}

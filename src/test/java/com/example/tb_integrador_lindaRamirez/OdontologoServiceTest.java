@@ -15,16 +15,13 @@ public class OdontologoServiceTest {
     OdontologoService odontologoService;
 
     @Test
-    public void testgetOdontologotWithApellidoLike()
-    {
+    public void testgetOdontologotWithApellidoLike() {
         OdontologoDTO odontologo = new OdontologoDTO();
         odontologo.setNombre("Linda");
         odontologo.setApellido("pruebaTest");
 
-
         odontologoService.agregar(odontologo);
-
-        Set<OdontologoDTO> odontologos = odontologoService.getOdontologoWithApellidoLike("prueba");
+        Set<OdontologoDTO> odontologos = odontologoService.findByApellidoContaining("prueba");
         boolean resultado = odontologos.size() > 0;
 
         assertTrue(resultado);

@@ -2,35 +2,42 @@
 <html lang="es">
 
 <head>
-    <title>Clinica Odontológica</title>
+    <title>Clínica Odontológica</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="text/javascript" src="/js/get_odontologo.js"></script>
     <script type="text/javascript" src="/js/update_odontologo.js"></script>
     <script type="text/javascript" src="/js/delete_odontologo.js"></script>
-    <script type="text/javascript" src="/js/get_odontologo.js"></script>
     <script type="text/javascript" src="/js/post_odontologo.js"></script>
-    <link rel="stylesheet" href="css/odontologo.css">
-
+    <link rel="stylesheet" href="/css/odontologo.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="imagen-favicon">
 </head>
 
-<body>
-    <div class="fondo">
-        <div class="container ">
+<body class="fondo">
+    <div class="container">
+        <div class="diente"></div>
+        <div class="formulario">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" href="/alta-odontologos.html">Agregar</a>
+                    <a class="nav-link" href="/">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/odontologos/">Todos</a>
+                    <a class="nav-link" href="/alta-odontologos.html">Crear</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="odontologos.html">Ver todos</a>
                 </li>
             </ul>
             <div id="div_odontologo_table">
                 <h2>Odontólogos</h2>
-                <div class="row col-md-6 table-responsive">
+                <div class="row table-responsive">
                     <table id="odontologoTable" class="table table-striped">
                         <thead>
                             <tr>
@@ -38,7 +45,7 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Matrícula</th>
-                                <th></th>
+                                <th>Modificaciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,8 +53,56 @@
                     </table>
                 </div>
             </div>
-            <hr>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="update_odontologo">
+                        <div class="form-group">
+                            <label class="control-label" for="id-odontologo">Id:</label>
+                            <input type="number" class="form-control" id="id-odontologo" name="id" disabled></input>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre"
+                                name="nombre" required></input>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="apellido">Apellido:</label>
+                            <input type="text" class="form-control" id="apellido" placeholder="Ingrese el apellido"
+                                name="apellido" required></input>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="matricula">Matricula:</label>
+                            <input type="text" class="form-control" id="matricula"
+                                placeholder="Ingrese número de matrícula" name="matricula"></input>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button id="btn-update-odontologo" type="button" class="btn btn-primary"
+                        data-dismiss="modal">Guardar</button>
+                </div>
+            </div>
         </div>
     </div>
+    <footer class="footer-odontologo">
+            <h2><span>Clínica</span> Odontológica<span> Backend I</span> </h2>
+        </div>
+        </section>
+    </footer>
 </body>
+
 </html>

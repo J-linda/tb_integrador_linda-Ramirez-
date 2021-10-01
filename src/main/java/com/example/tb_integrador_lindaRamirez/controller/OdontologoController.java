@@ -27,10 +27,15 @@ public class OdontologoController {
         return odontologoService.obtener(id);
     }
 
-    @GetMapping("/listApellido")
-    public Set<OdontologoDTO>obtenerTodos(@RequestParam String apellido)
-    {
-        return odontologoService.getOdontologoWithApellidoLike(apellido);
+    //@GetMapping("{apellido}")
+    //@RequestMapping(value = "apellido/{apellido}", method = RequestMethod.GET)
+    //public Set<OdontologoDTO>buscarPorApellido(@PathVariable String apellido) {
+       // return odontologoService.getOdontologoWithApellidoLike(apellido);
+    //}
+
+    @GetMapping("apellido/{apellido}")
+    public Set<OdontologoDTO> findByApellidoContaining(@PathVariable String apellido){
+        return odontologoService.findByApellidoContaining(apellido);
     }
 
     @PostMapping //verbo de HTTP

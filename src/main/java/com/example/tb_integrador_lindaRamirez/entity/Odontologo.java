@@ -20,7 +20,7 @@ public class Odontologo {
     private String nombre;
     private String apellido;
     private String matricula;
-    @OneToMany(mappedBy = "odontologo")
+    @OneToMany(mappedBy = "odontologo", fetch = FetchType.EAGER)
     //@JsonBackReference
     //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Set<Turno> turnos;

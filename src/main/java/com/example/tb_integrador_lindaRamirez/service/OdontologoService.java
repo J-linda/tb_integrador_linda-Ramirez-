@@ -7,7 +7,8 @@ import java.util.Set;
 public interface OdontologoService {
 
     Set<OdontologoDTO> obtenerTodos();
-    Set<OdontologoDTO> getOdontologoWithApellidoLike(String apellido);
+    //Set<OdontologoDTO> getOdontologoWithApellidoLike(String apellido);
+    Set<OdontologoDTO> findByApellidoContaining(String apellido);
     OdontologoDTO obtener (Long id) throws Exception;
     OdontologoDTO agregar (OdontologoDTO odontologoDTO);
     OdontologoDTO modificar (OdontologoDTO odontologoDTO);

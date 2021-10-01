@@ -10,6 +10,8 @@ import java.util.Set;
 @Repository
 public interface IOdontologoRepository extends JpaRepository <Odontologo, Long> {
 
-    @Query("from Odontologo s where s.apellido like %:apellido%")
-    Set<Odontologo> getOdontologoByApellidoLike(@Param("apellido")String apellido);
+    //@Query("from Odontologo s where s.apellido like %:apellido%")
+    //@Query("select od from Odontologo od where od.apellido like '%:apellido%'")
+    //Set<Odontologo> getOdontologoByApellidoLike(@Param("apellido") String apellido);
+    Set<Odontologo>findByApellidoContaining(String apellido);
 }

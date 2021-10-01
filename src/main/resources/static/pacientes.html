@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Clínica Odontológica</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="text/javascript" src="/js/get_paciente.js"></script>
+    <script type="text/javascript" src="/js/update_paciente.js"></script>
+    <script type="text/javascript" src="/js/delete_paciente.js"></script>
+    <script type="text/javascript" src="/js/post_paciente.js"></script>
+</head>
+<body>
+<div class="container">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/alta-pacientes.html">Agregar nuevo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="pacientes.html">Todos</a>
+        </li>
+    </ul>
+    <div id="div_paciente_table">
+        <h2>Pacientes</h2>
+        <div class="row table-responsive">
+            <table id="pacienteTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Fecha de ingreso</th>
+                    <th>Domicilio</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar paciente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="update_paciente">
+                    <div class="form-group">
+                        <label class="control-label" for="id-paciente">Id paciente:</label>
+                        <input type="number" class="form-control" id="id-paciente" name="id" disabled></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre"
+                               placeholder="Ingrese el nombre" name="nombre" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="apellido">Apellido:</label>
+                        <input type="text" class="form-control" id="apellido"
+                               placeholder="Ingrese el apellido" name="apellido" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="dni">DNI:</label>
+                        <input type="text" class="form-control" id="dni"
+                               placeholder="Ingrese DNI" name="dni" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="fecha-ingreso">Fecha de ingreso:</label>
+                        <input type="text" class="form-control" id="fecha-ingreso" name="fecha-ingreso" disabled></input>
+                    </div>
+                    <h6>Domicilio:</h6>
+                    <div class="form-group">
+                        <label class="control-label" for="id-domicilio">Id domicilio:</label>
+                        <input type="number" class="form-control" id="id-domicilio" name="id-domicilio" disabled></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="calle">Calle:</label>
+                        <input type="text" class="form-control" id="calle"
+                               placeholder="Ingrese la calle" name="calle"></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="numero">Número:</label>
+                        <input type="text" class="form-control" id="numero"
+                               placeholder="Ingrese el número" name="numero"></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="localidad">Localidad:</label>
+                        <input type="text" class="form-control" id="localidad"
+                               placeholder="Ingrese la localidad" name="localidad"></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="provincia">Provincia:</label>
+                        <input type="text" class="form-control" id="provincia"
+                               placeholder="Ingrese la provincia" name="provincia"></input>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="btn-update-paciente" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

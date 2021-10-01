@@ -1,57 +1,52 @@
-$(document).ready(function() {
-    $("#add_new_odontologo").submit(function(evt) {
-        evt.preventDefault();
-        
-        let formData = {
-            nombre : $("#nombre").val(),
-            apellido :  $("#apellido").val(),
-            matricula: $("#matricula").val(),
-        }
+window.addEventListener("load", function(){
+    const form = document.querySelector("#add_new_odontologo");
+        if(form){
+            form.addEventListener("submit", function(e){
+                e.preventDefault();
 
-        $.ajax({
-            url: '/odontologos',
-            type: 'POST',
-            contentType : "application/json",
-            data: JSON.stringify(formData),
-            dataType : 'json',
-            async: false,
-            cache: false,
-            success: function (response) {
-                let odontologo = response
-               console.log(response)
-                let successAlert = '<div class="alert alert-success alert-dismissible">' +
-                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                    '<strong></strong> Correcto! </div>'
-                $("#response").append(successAlert);
-                $("#response").css({"display": "block"});
+                let formData = {
+                    nombre : document.querySelector("#nombre").value,
+                    apellido :  document.querySelector("#apellido").value,
+                    matricula: document.querySelector("#matricula").value,
+                };
 
-                resetUploadForm();
-            },
-            error: function (response) {
-            console.log(response)
-                let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
-                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                    '<strong> Se presento un error! </strong> </div>'
-                $("#response").append(errorAlert);
-                $("#response").css({"display": "block"});
+                const settings = {
+                    method : "POST",
+                    headers : {
+                        "content-type" : "application/json"
+                    },
+                    body : JSON.stringify(formData)
+                }
 
-                resetUploadForm();
+                fetch("/odontologos", settings)
+                    .then(function (response) {
+                        if (!response.ok) throw Error(response.status);
+                        return response.json()
+                    })
+                    .then(function (data) {
+                        console.log(data);
+                        let successAlert = '<div class="alert alert-success alert-dismissible">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<strong></strong> Odontólogo creado </div>'
+                        document.querySelector("#response").innerHTML = successAlert;
+                        document.querySelector("#response").style.display = "block";
+                        resetForm();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        let errorAlert = '<div class="alert alert-success alert-dismissible">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<strong> Odontólogo creado</strong> </div>'
+                        document.querySelector("#response").innerHTML = errorAlert;
+                        document.querySelector("#response").style.display = "block";
+                        resetForm();
+                    })
+        })
+
+        function resetForm(){
+                document.querySelector("#nombre").value = "";
+                document.querySelector("#apellido").value = "";
+                document.querySelector("#matricula").value = "";
             }
-        });
-    });
-
-    function resetUploadForm(){
-        $("#nombre").val("");
-        $("#apellido").val("");
-        $("#matricula").val("");
     }
-
-    (function(){
-        let pathname = window.location.pathname;
-        if(pathname === "/"){
-            $(".nav .nav-item a:first").addClass("active");
-        } else if (pathname == "/odontologos.html") {
-            $(".nav .nav-item a:last").addClass("active");
-        }
-    })();
 });

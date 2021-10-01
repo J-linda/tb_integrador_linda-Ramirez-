@@ -1,6 +1,7 @@
 package com.example.tb_integrador_lindaRamirez.service;
 import com.example.tb_integrador_lindaRamirez.controller.DTO.PacienteDTO;
 import com.example.tb_integrador_lindaRamirez.entity.Paciente;
+import com.example.tb_integrador_lindaRamirez.repository.IDomicilioRepository;
 import com.example.tb_integrador_lindaRamirez.repository.IPacienteRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,13 @@ public class PacienteServiceImpl implements PacienteService {
 
 
     private final IPacienteRepository pacienteRepository;
+    private final IDomicilioRepository domicilioRepository;
     @Autowired
     private final ObjectMapper mapper;
 
-    public PacienteServiceImpl(IPacienteRepository pacienteRepository, ObjectMapper mapper) {
+    public PacienteServiceImpl(IPacienteRepository pacienteRepository, IDomicilioRepository domicilioRepository, ObjectMapper mapper) {
         this.pacienteRepository = pacienteRepository;
+        this.domicilioRepository = domicilioRepository;
         this.mapper = mapper;
     }
 
@@ -61,7 +64,10 @@ public class PacienteServiceImpl implements PacienteService {
     @Transactional
     public PacienteDTO agregar(PacienteDTO pacienteDTO) {
         Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
+        paciente.setDomicilio(pacienteDTO.getDomicilio());
         pacienteRepository.save(paciente);
+        domicilioRepository.save(pacienteDTO.getDomicilio());
+        System.out.println(paciente);
         return new PacienteDTO(paciente.getId(), paciente.getNombre(),paciente.getApellido(), paciente.getDni(), paciente.getFechaAlta(), paciente.getDomicilio());
     }
 

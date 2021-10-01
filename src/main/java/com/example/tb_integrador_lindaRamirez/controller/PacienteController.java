@@ -29,6 +29,7 @@ public class PacienteController {
 
     @PostMapping
     public ResponseEntity<PacienteDTO>agregar(@RequestBody PacienteDTO paciente){
+        //System.out.println(paciente.getDomicilio());
         pacienteService.agregar(paciente);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
