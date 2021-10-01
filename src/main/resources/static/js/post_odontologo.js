@@ -36,7 +36,7 @@ window.addEventListener("load", function(){
                         console.log(error);
                         let errorAlert = '<div class="alert alert-success alert-dismissible">' +
                         '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                        '<strong> Odontólogo creado</strong> </div>'
+                        '<strong> Correcto!</strong> </div>'
                         document.querySelector("#response").innerHTML = errorAlert;
                         document.querySelector("#response").style.display = "block";
                         resetForm();

@@ -31,7 +31,6 @@ async function mostrarTodos(){
                 }
                 document.querySelector('#odontologoTable tbody').innerHTML = odontologoHtml;
                 mostrarPorId();
-                borrarOdontologo();
             })
             .catch(function (error) {
                 console.log(error);

@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>CRUD pacientes</title>
+    <title>Clínica Odontológica</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="/css/odontologo.css">
     <script type="text/javascript" src="/js/post_paciente.js"></script>
 </head>
-<body>
-<div class="container">
-    <ul class="nav nav-pills d-flex justify-content-around">
+<body class="fondo">
+<div class="container-odontologo">
+    <ul class="nav nav-pills nav-alta">
         <li class="nav-item">
-            <a class="nav-link" href="/">Inicio</a>
+            <a class="nav-link" href="/">Principal</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/pacientes.html">Ver pacientes</a>
+            <a class="nav-link" href="/pacientes.html">Ver Todos</a>
         </li>
     </ul>
     <div class="row d-flex flex-row justify-content-center alig-items-center">
-        <div class="col-sm-7" style="background-color:#e6fffa; padding:10px; border-radius:3px">
-            <h3>Agregar paciente</h3>
+        <div class="col-sm-7"  padding:10px>
+            <h3>Agregar</h3>
             <form id="add_new_paciente">
                 <div class="form-group">
                     <label class="control-label" for="nombre">Nombre:</label>
@@ -39,34 +40,32 @@
                     <input type="text" class="form-control" id="dni"
                            placeholder="Ingrese el DNI" name="dni"></input>
                 </div>
+                <div class="form-group">
+                    <label class="control-label" for="fechaAlta">Fecha Alta:</label>
+                    <input type="date" pattern="/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/" class="form-control" id="fechaAlta"
+                           placeholder="Ingrese la fecha de alta" name="fechaAlta"  required></input>
+                </div>
                 <h5>Domicilio</h5>
-                <div class="form-group">
-                    <label class="control-label" for="calle">Calle:</label>
-                    <input type="text" class="form-control" id="calle"
-                           placeholder="Ingrese la calle" name="calle"></input>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="numero">Número:</label>
-                    <input type="text" class="form-control" id="numero"
-                           placeholder="Ingrese el número" name="numero"></input>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="localidad">Localidad:</label>
-                    <input type="text" class="form-control" id="localidad"
-                           placeholder="Ingrese la localidad" name="localidad"></input>
-                </div>  <div class="form-group">
-                <label class="control-label" for="provincia">Provincia:</label>
-                <input type="text" class="form-control" id="provincia"
-                       placeholder="Ingrese la provincia" name="provincia"></input>
-            </div>
 
-                <button type="submit" class="btn btn-danger" id="btn-add-new-paciente">Cargar</button>
+                <div class="form-group">
+                    <label class="control-label" for="id-domicilio">id:</label>
+                    <input type="number" class="form-control" id="id-domicilio"
+                    placeholder="Ingrese Id del domicilio" name="id-domicilio"></input>
+                </div>
+                <button type="submit" class="btn btn-success" id="btn-add-new-paciente">Cargar</button>
             </form>
             <div id="response" style="display:none; margin-top:10px">
             </div>
         </div>
     </div>
 </div>
-
+<footer class="footer-odontologo">
+      <div class="iconos">
+          <div><h2> <span>BACK</span> END <span>I</span> </h2>
+          </div>
+          <div><i class="fas fa-tooth"></i>
+          </div>
+      </div>
+</footer>
 </body>
 </html>

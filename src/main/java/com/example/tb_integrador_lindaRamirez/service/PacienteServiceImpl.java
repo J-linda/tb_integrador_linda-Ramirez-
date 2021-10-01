@@ -18,13 +18,11 @@ public class PacienteServiceImpl implements PacienteService {
 
 
     private final IPacienteRepository pacienteRepository;
-    private final IDomicilioRepository domicilioRepository;
     @Autowired
     private final ObjectMapper mapper;
 
     public PacienteServiceImpl(IPacienteRepository pacienteRepository, IDomicilioRepository domicilioRepository, ObjectMapper mapper) {
         this.pacienteRepository = pacienteRepository;
-        this.domicilioRepository = domicilioRepository;
         this.mapper = mapper;
     }
 
@@ -66,8 +64,6 @@ public class PacienteServiceImpl implements PacienteService {
         Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
         paciente.setDomicilio(pacienteDTO.getDomicilio());
         pacienteRepository.save(paciente);
-        domicilioRepository.save(pacienteDTO.getDomicilio());
-        System.out.println(paciente);
         return new PacienteDTO(paciente.getId(), paciente.getNombre(),paciente.getApellido(), paciente.getDni(), paciente.getFechaAlta(), paciente.getDomicilio());
     }
 

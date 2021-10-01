@@ -201,17 +201,17 @@ tbody {
     text-align: center;
 }
 
-.fa-tooth{
-    color: #00BCD4;
-    font-size: 30px;
-    margin-bottom: 10px;
-    text-align: center;
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px; 
 }
-
 .nav {
     display: flex;
     justify-content: center;
     margin-top: 100px;
     
-
+}
+.nav-alta{
+    margin-top: 20px;
 }
